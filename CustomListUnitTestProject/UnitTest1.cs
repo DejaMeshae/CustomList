@@ -18,7 +18,7 @@ namespace CustomListUnitTestProject
             myList.Add(value);
 
             //Assert
-            //Assert.AreEqual(value, myList[0]);
+            Assert.AreEqual(value, myList[0]);
         }
 
         //[TestMethod]//adding a deja to the list 3 times
