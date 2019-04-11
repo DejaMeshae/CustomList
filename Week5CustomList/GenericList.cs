@@ -10,10 +10,10 @@ namespace Week5CustomList
     {
         //member variables
         private T[] items; //my array of items
-        int count;
-        int capacity;
-        // Count property (create this later)
-        // indexer property (google/create this later)
+        int count; //creating a variable of count
+        int capacity; //creating a variable of capacity
+                      // Count property (create this later)
+
 
         public GenericList() //constructor
         {
@@ -28,7 +28,7 @@ namespace Week5CustomList
             if (CheckCapacity(itemToAdd)) //
             {
                 // this means there is already room
-                items[count] = itemToAdd; //items to add will now be added to the array
+                items[count] = itemToAdd; //items to add will now be added to the end of the array
                 count++; //adds it at the end
             }
             else
@@ -42,7 +42,7 @@ namespace Week5CustomList
                 {
                     tempArray[i] = items[i]; //loops through each element in count
                 }
-                
+
                 tempArray[count] = itemToAdd; //adds the item to add to count
                 count++; //adds it at the end
 
@@ -50,9 +50,9 @@ namespace Week5CustomList
                 items = tempArray; //items now equal new array
 
             }
-            
+
         }
-        
+
 
         //checks capacity 
         private bool CheckCapacity(T item)
@@ -74,27 +74,27 @@ namespace Week5CustomList
 
         }
 
-        //create .remove
-        public void Remove(T item)
+        //create .Remove
+        public bool Remove(T itemToRemove)//T can be anything, needs to be a bool
         {
-            if (CheckCapacity(item))
+            if (CheckCapacity(itemToRemove))
             {
-              
+                items[count] = itemToRemove; //at the end of items (count) will be removed
+                count--; //removes it from the end 
+                return true;
             }
             else
             {
-
+                return false;
+                //if there is nothing to remove throw exception
             }
-            //for (int i = 0; i < item; i++)
-            //{
-
-            //}
         }
 
         //indexer
         public T this[int i]
         {
-            get { return items[i];}
+            get { return items[i]; }
+            set { items[i] = value; } //needed to add this so user can grab from a certain index
         }
 
         

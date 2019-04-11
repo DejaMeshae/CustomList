@@ -7,8 +7,8 @@ namespace CustomListUnitTestProject
     [TestClass]
     public class UnitTest1
     {
-        [TestMethod]//adding a string to a list 
-        public void TestMethod1()
+        [TestMethod]//adding a string to a list, testing the add method
+        public void CheckAdd1()
         {
             //Arrange
             GenericList<string> myList = new GenericList<string>();
@@ -18,25 +18,73 @@ namespace CustomListUnitTestProject
             myList.Add(value);
 
             //Assert
-            Assert.AreEqual(value, myList[0]);
+            Assert.AreEqual(value, myList[0]); //passed as Deja is now in the index of 0, the first index
         }
 
-        //[TestMethod]//adding a deja to the list 3 times
-        //public void TestMethod2()
-        //{
-        //    //Arrange
-        //    GenericList<string> myList = new GenericList<string>();
-        //    string value = "Deja";
+        [TestMethod]//adding a deja to the list 4 times, checking the 3rd index
+        public void CheckAdd2()
+        {
+            //Arrange
+            GenericList<string> myList = new GenericList<string>();
+            string value = "Deja";
+            
 
 
-        //    //Act
-        //    myList.Add(value);
-        //    myList.Add(value);
-        //    myList.Add(value);
+            //Act
+            myList.Add(value);
+            myList.Add(value);
+            myList.Add(value);
+            myList.Add(value);
 
-        //    //Assert
-        //    Assert.AreEqual(value, myList[0]); //error because I haven't created index yet
-        //}
+
+            //Assert
+            Assert.AreEqual(value, myList[3]);
+        }
+
+        [TestMethod]//adding different animals to a list, checking the the 3rd index which should be ant
+        public void CheckAdd3()
+        {
+            //Arrange
+            GenericList<string> animals = new GenericList<string>();
+            string firstAnimal = "Tiger";
+            string secondAnimal = "Duck";
+            string thirdAnimal = "Cat";
+            string fourthAnimal = "Ant";
+            string fifthAnimal = "Lion";
+            // int result = animals.Count;
+
+            //Act
+            animals.Add(firstAnimal);
+            animals.Add(secondAnimal);
+            animals.Add(thirdAnimal);
+            animals.Add(fourthAnimal);
+            animals.Add(fifthAnimal);
+
+            //Assert
+            Assert.AreEqual(fourthAnimal, animals[3]);
+        }
+
+        [TestMethod]//adding a string to a list, testing the add method
+        public void CheckRemove1()
+        {
+            //Arrange
+            GenericList<string> myList = new GenericList<string>();
+            string value = "Deja"; //creating values
+            string value2 = "Joseph";
+            string value3 = "Jack";
+
+
+            //Act
+            myList.Add(value); //adding strings to list
+            myList.Add(value2);
+            myList.Add(value3);
+            myList.Remove(value3); //removing value 3 which is at the 2nd index
+
+            //Assert
+            Assert.AreEqual(value3, myList[2]); 
+            //Assert.AreNotEqual(value3, myList[2]);
+        }
+
 
 
         //[TestMethod]//counts how many elements are in a string
@@ -55,6 +103,7 @@ namespace CustomListUnitTestProject
         //    Assert.AreEqual(expectedResult, result);
         //}
 
+
         //[TestMethod]
         //public void CheckCount2()
         //{
@@ -69,27 +118,6 @@ namespace CustomListUnitTestProject
         //    Assert.AreEqual(expectedResult, result);
         //}
 
-        //[TestMethod]
-        //public void CheckAdd1()
-        //{
-        //    GenericList<string> animals = new GenericList<string>();
-        //    string firstAnimal = "Tiger";
-        //    string secondAnimal = "Duck";
-        //    string thirdAnimal = "Cat";
-        //    string fourthAnimal = "Ant";
-        //    string expectedResult = ("Tiger","Duck", "Cat", "Ant");
-        //    // int result = animals.Count;
-        //    int result;
-
-        //    animals.Add(firstAnimal);
-        //    animals.Add(secondAnimal);
-        //    animals.Add(thirdAnimal);
-        //    animals.Add(fourthAnimal);
-        //    // add the adds (lol)
-
-
-        //    Assert.AreEqual(expectedResult, result);
-        //}
 
         //[TestMethod]//adding 2 numbers together
         //public void Add_PositiveNumbers()
