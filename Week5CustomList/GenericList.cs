@@ -12,8 +12,7 @@ namespace Week5CustomList
         private T[] items; //my array of items
         int count; //creating a variable of count
         int capacity; //creating a variable of capacity
-                      // Count property (create this later)
-
+        private T[] tempArray;
 
         public GenericList() //constructor
         {
@@ -34,7 +33,6 @@ namespace Week5CustomList
             else
             {
                 // this means we need to make room
-                T[] tempArray; //temp array of items
                 capacity *= 2; //double the capacity
                 tempArray = new T[capacity]; //instanciate the array of the size of the capacity 
 
@@ -68,34 +66,61 @@ namespace Week5CustomList
             }
         }
 
-        //increase capacity
-        private void IncreaseCapacity()
-        {
-
-        }
-
         //create .Remove
-        public bool Remove(T itemToRemove)//T can be anything, needs to be a bool
+        public void Remove(T input)
         {
-            if (CheckCapacity(itemToRemove))
+            bool removed = false;
+            for (int i = 1; i <= count; i++)
             {
-                items[count] = itemToRemove; //at the end of items (count) will be removed
-                count--; //removes it from the end 
-                return true;
+                if (this[i].Equals(input))
+                {
+                    count--;
+                    tempArray[i] = items[i + 1];
+                    removed = true;
+                }
+                else if (removed)
+                {
+                    tempArray[i] = items[i + 1];
+                }
+                else
+                {
+                    tempArray[i] = items[i];
+                }
             }
-            else
-            {
-                return false;
-                //if there is nothing to remove throw exception
-            }
+
+            items = tempArray;
         }
 
         //indexer
         public T this[int i]
         {
-            get { return items[i]; }
-            set { items[i] = value; } //needed to add this so user can grab from a certain index
+            get
+            {
+                return items[i];
+            }
+            set
+            {
+                items[i] = value;
+            } 
         }
+
+        public int Count() 
+        {
+            int index = 0;
+            for (int i = 0; i <items.Length; i++)
+            {
+                index++;
+            }
+            return index;
+        }
+
+        //public void Show() //
+        //{
+        //    foreach (T item in items)
+        //    {
+        //        Console.WriteLine(item);
+        //    }
+        //}
 
         
 

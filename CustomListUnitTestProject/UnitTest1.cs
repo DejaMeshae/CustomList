@@ -27,7 +27,7 @@ namespace CustomListUnitTestProject
             //Arrange
             GenericList<string> myList = new GenericList<string>();
             string value = "Deja";
-            
+
 
 
             //Act
@@ -51,7 +51,7 @@ namespace CustomListUnitTestProject
             string thirdAnimal = "Cat";
             string fourthAnimal = "Ant";
             string fifthAnimal = "Lion";
-            // int result = animals.Count;
+            //int result = animals.Count;
 
             //Act
             animals.Add(firstAnimal);
@@ -64,43 +64,66 @@ namespace CustomListUnitTestProject
             Assert.AreEqual(fourthAnimal, animals[3]);
         }
 
-        [TestMethod]//adding a string to a list, testing the add method
+        [TestMethod]
         public void CheckRemove1()
         {
             //Arrange
             GenericList<string> myList = new GenericList<string>();
-            string value = "Deja"; //creating values
-            string value2 = "Joseph";
-            string value3 = "Jack";
+            string[] testIntArray = new string[3] { "Dog", "Bird", "Lizard" };
 
 
             //Act
-            myList.Add(value); //adding strings to list
-            myList.Add(value2);
-            myList.Add(value3);
-            myList.Remove(value3); //removing value 3 which is at the 2nd index
+            myList.Remove("Bird"); 
 
             //Assert
-            Assert.AreEqual(value3, myList[2]); 
-            //Assert.AreNotEqual(value3, myList[2]);
+            Assert.IsFalse(false, "Bird");
+        }
+
+        [TestMethod]
+        public void CheckRemove2()
+        {
+            //Arrange
+            GenericList<int> numbers = new GenericList<int>();
+            int[] testNumbers = new int[4] { 1, 2, 3, 4 };
+
+
+            //Act
+            numbers.Remove(2);
+
+            //Assert
+            Assert.IsFalse(false);
+        }
+
+        [TestMethod]//counts how many elements are in a string
+        public void CheckCount()
+        {
+            //Arrange
+            GenericList<string> shoes = new GenericList<string>();
+            string shoeOne = "Nike";
+
+            //Act
+            shoes.Add(shoeOne);//replace add with the method that will preform this when I create it
+
+            //Assert
+            Assert.AreEqual(1, shoes.Count);
         }
 
 
+}
+}   
 
-        //[TestMethod]//counts how many elements are in a string
-        //public void CheckCount()
+       //[TestMethod]
+        //public void TestMethod2() //testing count
         //{
-        //    GenericList<string> shoes = new GenericList<string>();
-        //    string shoeOne = "Nike";
-        //    string shoeTwo = "Addias";
-        //    int expectedResult = 2;
-        //int result = shoes.Count;
+        //    //Arrange
+        //    GenericList<int> myList = new GenericList<int>();
+        //    int value = 5;
+        //    int expectedCount = 1;
+        //    //Act
+        //    myList.Add(value);
 
-        ////adding the shoes to the list
-        //shoes.Add(shoeOne);//replace add with the method that will preform this when I create it
-        //shoes.Add(shoeTwo);//replace add "
-
-        //    Assert.AreEqual(expectedResult, result);
+        //    //Assert
+        //    Assert.AreEqual(expectedCount, myList.Count);
         //}
 
 
@@ -136,5 +159,5 @@ namespace CustomListUnitTestProject
         //    Assert.AreEqual(expectedResult, result);
         //}
 
-    }
-}
+    
+

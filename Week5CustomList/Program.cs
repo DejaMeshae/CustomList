@@ -10,14 +10,13 @@ namespace Week5CustomList
     {
         static void Main(string[] args)
         {
-            //GenericList<int> animals = new GenericList<int>();
+            GenericList<string> animal = new GenericList<string>();
 
-            //animals.Add(1); //tested my .add to make sure it was actually adding a bigger array
-            //animals.Add(2);
-            //animals.Add(3);
-            //animals.Add(4);
-            //animals.Add(5);
-            //Console.ReadLine();
+            animal.Add("Dog"); //tested my .add to make sure it was actually adding a bigger array
+            animal.Add("Cat"); //tested my .remove to make sure it was actually
+            animal.Add("Frog");
+            animal.Add("Fish");
+            animal.Remove("Dog");
         }
     }
 }
