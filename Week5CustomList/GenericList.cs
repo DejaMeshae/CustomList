@@ -124,27 +124,13 @@ namespace Week5CustomList
             return stringList;
         }
 
-        //public void Show() //
-        //{
-        //    foreach (T item in items)
-        //    {
-        //        Console.WriteLine(item);
-        //    }
-        //}
+        //operator -
+        public static GenericList<T> operator -(GenericList<T> listA, GenericList<T> listB)
+        {
+            GenericList<T> minusItems = new GenericList<T>();
+            minusItems = listA - listB;
+            return minusItems;
+        }
 
-
-
-
-        //public double Calculate(double firstNumber, double secondNumber)
-        //{
-        //    double sum = firstNumber + secondNumber;
-        //    return sum;
-        //}
-
-        //public double MultiplySomeNumbers(double firstNumber, double secondNumber)
-        //{
-        //    double answer = firstNumber * secondNumber;
-        //    return answer;
-        //}
     }
 }

@@ -128,7 +128,7 @@ namespace CustomListUnitTestProject
             Assert.AreEqual(1, shoes.Count);
         }
 
-        [TestMethod]
+        [TestMethod]//FIX
         public void CheckCount2()
         {
             //Arrange
@@ -138,7 +138,10 @@ namespace CustomListUnitTestProject
             //Act
             list.Add(number);
             list.Add(number);
-            Assert.AreEqual(2, list.Count);
+            list.Add(number);
+
+            //Assert
+            Assert.AreEqual(3, list.Count);
         }
 
         [TestMethod]
@@ -155,10 +158,25 @@ namespace CustomListUnitTestProject
             Assert.AreEqual("CatsCatsCats", Cats);
         }
 
+        [TestMethod]
+        public void CheckMinusTwoLists()
+        {
+            //Arrange
+            GenericList<string> fish = new GenericList<string>();
+            GenericList<string> dog = new GenericList<string>();
+            fish.Add("Goldfish");
+            fish.Add("Clownfish");
+            dog.Add("German Shepherd");
+
+            //Act
+            GenericList<string> animals = fish - dog;
+
+            //Assert
+            Assert.AreEqual(1, animals[0]);
+        }
+
     }
 }   
-
-
 
 
         //[TestMethod]//adding 2 numbers together
