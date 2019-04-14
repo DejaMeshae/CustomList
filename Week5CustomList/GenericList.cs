@@ -104,14 +104,24 @@ namespace Week5CustomList
             } 
         }
 
-        public int Count() 
+        public int Count
         {
-            int index = 0;
-            for (int i = 0; i <items.Length; i++)
+           get
             {
-                index++;
+                int count = items.Length;
+                return count;
             }
-            return index;
+        }
+
+        //override ToString method
+        public override string ToString()
+        {
+            string stringList = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                stringList += string.Concat(items[i]);
+            }
+            return stringList;
         }
 
         //public void Show() //
@@ -122,7 +132,7 @@ namespace Week5CustomList
         //    }
         //}
 
-        
+
 
 
         //public double Calculate(double firstNumber, double secondNumber)

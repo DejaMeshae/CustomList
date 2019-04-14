@@ -94,6 +94,26 @@ namespace CustomListUnitTestProject
             Assert.IsFalse(false);
         }
 
+        //[TestMethod]
+        //public void CheckRemove3()
+        //{
+        //    //Arrange
+        //    GenericList<int> numbers = new GenericList<int>();
+        //    int number1 = 1;
+        //    int number2 = 2;
+
+
+        //    //Act
+        //    numbers.Add(number1);
+        //    numbers.Add(number2);
+        //    numbers.Add(number1);
+        //    numbers.Remove(3);
+
+        //    //Assert
+        //    Assert.AreEqual(3, numbers.Count); //FIX
+        //}
+
+
         [TestMethod]//counts how many elements are in a string
         public void CheckCount()
         {
@@ -108,38 +128,37 @@ namespace CustomListUnitTestProject
             Assert.AreEqual(1, shoes.Count);
         }
 
+        [TestMethod]
+        public void CheckCount2()
+        {
+            //Arrange
+            GenericList<int> list = new GenericList<int>();
+            int number = 3;
 
-}
+            //Act
+            list.Add(number);
+            list.Add(number);
+            Assert.AreEqual(2, list.Count);
+        }
+
+        [TestMethod]
+        public void CheckToString()
+        {
+            //Arrange
+            GenericList<string> list = new GenericList<string>();
+            list.Add("Cats");
+            list.Add("Cats");
+            list.Add("Cats");
+            //Act
+            string Cats = list.ToString();
+            //Assert
+            Assert.AreEqual("CatsCatsCats", Cats);
+        }
+
+    }
 }   
 
-       //[TestMethod]
-        //public void TestMethod2() //testing count
-        //{
-        //    //Arrange
-        //    GenericList<int> myList = new GenericList<int>();
-        //    int value = 5;
-        //    int expectedCount = 1;
-        //    //Act
-        //    myList.Add(value);
 
-        //    //Assert
-        //    Assert.AreEqual(expectedCount, myList.Count);
-        //}
-
-
-        //[TestMethod]
-        //public void CheckCount2()
-        //{
-        //    GenericList<int> numbers = new GenericList<int>();
-        //    int firstNumber = 6;
-        //    int secondNumber = 10;
-        //    int expectedResult = 16;
-        //    int result = numbers.Count;
-
-        //    numbers.Calculate(firstNumber, secondNumber);
-
-        //    Assert.AreEqual(expectedResult, result);
-        //}
 
 
         //[TestMethod]//adding 2 numbers together
