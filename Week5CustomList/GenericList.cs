@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Week5CustomList
 {
-    public class GenericList<T> : IEnumerable<T> //when I instanciate this class I need to give it the datatype of what I want the class to be
+    public class GenericList<T> : IEnumerable //when I instanciate this class I need to give it the datatype of what I want the class to be
     {
         //member variables
         private T[] items; //my array of items
@@ -158,25 +158,29 @@ namespace Week5CustomList
         }
 
         //zipper
-        public void Zipper(GenericList<T> ListA, GenericList<T> ListB)
+        public static GenericList<T> Zipper(GenericList<T> ListA, GenericList<T> ListB)
         {
-            if (ListA.items.Length > ListB.items.Length || ListA.items.Length < ListB.items.Length || ListA.items.Length == ListB.items.Length)
+            GenericList<T> ListC = new GenericList<T>();
+            if (ListA.Count >= ListB.Count)
             {
-                for (int i = 0; i < ListB.items.Length; i++)
+                for (int i = 0; i < ListB.Count; i++)
                 {
                     Console.WriteLine("{0} \t{1}", ListA.items[i], ListB.items[i]);
                 }
-                for (int i = ListB.items.Length; i < ListA.items.Length; i++)
+            }
+            else
+            { 
+                for (int i = ListB.Count; i < ListA.Count; i++)
                 {
                     Console.WriteLine("{0}", ListA.items[i]);
                 }
-
             }
+            return ListC; //I know it should return a new list just now 100% sure of the logic
         }
 
-        IEnumerator<T> IEnumerable<T>.GetEnumerator()
+        public IEnumerator GetEnumerator()
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < count; i++)
             {
                 yield return items[i];
             }
