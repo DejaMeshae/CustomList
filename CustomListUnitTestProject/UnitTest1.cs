@@ -94,24 +94,23 @@ namespace CustomListUnitTestProject
             Assert.IsFalse(false);
         }
 
-        //[TestMethod]
-        //public void CheckRemove3()
-        //{
-        //    //Arrange
-        //    GenericList<int> numbers = new GenericList<int>();
-        //    int number1 = 1;
-        //    int number2 = 2;
+        [TestMethod]
+        public void CheckRemove3()
+        {
+            //Arrange
+            GenericList<int> numbers = new GenericList<int>();
+            int number1 = 1;
+            int number2 = 2;
 
+            //Act
+            numbers.Add(number1);
+            numbers.Add(number2);
+            numbers.Add(number1);
+            numbers.Remove(3);
 
-        //    //Act
-        //    numbers.Add(number1);
-        //    numbers.Add(number2);
-        //    numbers.Add(number1);
-        //    numbers.Remove(3);
-
-        //    //Assert
-        //    Assert.AreEqual(3, numbers.Count); //FIX
-        //}
+            //Assert
+            Assert.AreEqual(3, numbers.Count); 
+        }
 
 
         [TestMethod]//counts how many elements are in a string
@@ -164,15 +163,20 @@ namespace CustomListUnitTestProject
             //Arrange
             GenericList<string> fish = new GenericList<string>();
             GenericList<string> dog = new GenericList<string>();
+            GenericList<string> newList = new GenericList<string>();
+            string expected = "Clownfish";
+            string actual;
+
             fish.Add("Goldfish");
             fish.Add("Clownfish");
-            dog.Add("German Shepherd");
+            dog.Add("Goldfidsh");
 
             //Act
-            GenericList<string> animals = fish - dog;
+            newList = dog - fish;
+            actual = newList[0];
 
             //Assert
-            Assert.AreEqual(1, animals[0]);
+            Assert.AreEqual(expected, actual);
         }
 
     }

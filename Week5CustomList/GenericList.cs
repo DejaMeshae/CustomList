@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Week5CustomList
 {
-    public class GenericList<T>//when I instanciate this class I need to give it the datatype of what I want the class to be
+    public class GenericList<T> : IEnumerable<T> //when I instanciate this class I need to give it the datatype of what I want the class to be
     {
         //member variables
         private T[] items; //my array of items
@@ -104,11 +105,11 @@ namespace Week5CustomList
             } 
         }
 
+        //Count
         public int Count
         {
            get
             {
-                int count = items.Length;
                 return count;
             }
         }
@@ -127,10 +128,46 @@ namespace Week5CustomList
         //operator -
         public static GenericList<T> operator -(GenericList<T> listA, GenericList<T> listB)
         {
-            GenericList<T> minusItems = new GenericList<T>();
-            minusItems = listA - listB;
-            return minusItems;
+            for (int i = 0; i < listA.Count; i++)
+            {
+                for (int j = 0; j < listB.Count; j++)
+                {
+                    if (listA[i].Equals(listB[j]))
+                    {
+                        listA.Remove(listA[i]);
+                    }
+                }
+            }
+            return listA;
         }
 
+        public static GenericList<T> operator +(GenericList<T> listC, GenericList<T> listD)
+        {
+            try
+            {
+                for (int i = 0; i < listD.Count; i++)
+                {
+                    listC.Add(listD[i]);
+                }
+                return listC;
+            }
+            catch
+            {
+                throw new Exception("Data types must match!");
+            }
+        }
+
+        IEnumerator<T> GetEnumerator()
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                yield return items[i];
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
+        }
     }
 }

@@ -1,0 +1,23 @@
+- operator
+   syntax:       Public Static GenericList<T> listsC = listA - listB;   
+Parameter: None
+Return Type: None 
+Example:
+using System;
+using System.Collections.Generic;
+
+	public void CheckMinusTwoLists()
+        {            
+            GenericList<string> fish = new GenericList<string>(); // Creates 2 lists
+            GenericList<string> dog = new GenericList<string>(); 
+            fish.Add("Goldfish");
+            fish.Add("Clownfish");
+            dog.Add("German Shepherd");
+
+            GenericList<string> animals = fish - dog;
+
+	    Assert.AreEqual(1, animals[0]);
+        }
+Output: Goldfish,Clownfish
+
+
