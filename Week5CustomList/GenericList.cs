@@ -157,7 +157,24 @@ namespace Week5CustomList
             }
         }
 
-        IEnumerator<T> GetEnumerator()
+        //zipper
+        public void Zipper(GenericList<T> ListA, GenericList<T> ListB)
+        {
+            if (ListA.items.Length > ListB.items.Length || ListA.items.Length < ListB.items.Length || ListA.items.Length == ListB.items.Length)
+            {
+                for (int i = 0; i < ListB.items.Length; i++)
+                {
+                    Console.WriteLine("{0} \t{1}", ListA.items[i], ListB.items[i]);
+                }
+                for (int i = ListB.items.Length; i < ListA.items.Length; i++)
+                {
+                    Console.WriteLine("{0}", ListA.items[i]);
+                }
+
+            }
+        }
+
+        IEnumerator<T> IEnumerable<T>.GetEnumerator()
         {
             for (int i = 0; i < items.Length; i++)
             {
